@@ -1,38 +1,75 @@
-# sv
+# Elgato Timestamps to YouTube Chapters Converter
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A utility application that converts Elgato Stream Deck timestamp files into properly formatted YouTube chapter markers.
 
-## Creating a project
+## Technology Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework**: SvelteKit
+- **UI Library**: Svelte 5 with runes
+- **Hosting**: Cloudflare Pages
+- **Language**: TypeScript
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Features
 
-# create a new project in my-app
-npx sv create my-app
-```
+- Drag and drop or file selection for timestamp files
+- Automatic conversion of Elgato timestamp format to YouTube chapter format
+- Timestamp offset adjustment
+- First chapter automatic formatting to 00:00
+- Client-side processing (no server uploads)
 
-## Developing
+## Development Setup
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Prerequisites
 
-```bash
-npm run dev
+- Node.js (v18+)
+- npm or pnpm
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Installation
 
-## Building
+1. Clone the repository
 
-To create a production version of your app:
+   ```bash
+   git clone https://github.com/StephenGunn/elgato-youtube-chapters.git
+   cd elgato-youtube-chapters
+   ```
+
+2. Install dependencies
+
+   ```bash
+   npm install
+   # or
+   pnpm install
+   ```
+
+3. Start the development server
+
+   ```bash
+   npm run dev
+   # or
+   pnpm dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Building for Production
 
 ```bash
 npm run build
+# or
+pnpm build
 ```
 
-You can preview the production build with `npm run preview`.
+## Deployment
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+This application is configured for deployment to Cloudflare Pages:
+
+1. Create a new Cloudflare Pages project
+2. Connect your GitHub repository
+3. Configure the build settings:
+   - Build command: `npm run build` or `pnpm build`
+   - Build output directory: `.svelte-kit/cloudflare`
+   - Environment variables: Add any required environment variables
+
+## License
+
+[MIT](LICENSE)
