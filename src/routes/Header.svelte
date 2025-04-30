@@ -25,24 +25,25 @@
 		</div>
 		<nav aria-label="Main navigation">
 			<a href="#how-to-use">How To Use</a>
-			<a href="https://github.com/StephenGunn/repo" target="_blank" rel="noopener noreferrer"
-				>View Source</a
+			<a
+				href="https://github.com/StephenGunn/elgato-youtube-chapters"
+				target="_blank"
+				rel="noopener noreferrer">View Source</a
 			>
 		</nav>
 	</div>
 </header>
 
 <style>
+	/* Base styles (already in your code) */
 	header {
 		border-bottom: 1px solid var(--border);
 		padding: 0.75rem 0;
 	}
-
 	header .column {
 		display: flex;
 		justify-content: space-between;
 	}
-
 	.logo {
 		display: flex;
 		align-items: center;
@@ -51,7 +52,6 @@
 		color: var(--primary);
 		gap: 0.5rem;
 	}
-
 	.logo svg {
 		width: 1.2rem;
 		height: 1.2rem;
@@ -59,13 +59,11 @@
 		top: 2px;
 		color: var(--accent);
 	}
-
 	nav {
 		display: flex;
 		gap: 1rem;
 		align-items: center;
 	}
-
 	nav a {
 		display: inline-flex;
 		align-items: center;
@@ -75,5 +73,41 @@
 		padding: 0.5rem 1rem;
 		font-weight: 500;
 		border-radius: 0.24rem;
+	}
+
+	/* Responsive styles */
+	@media (max-width: 768px) {
+		header .column {
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		nav {
+			width: 100%;
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.logo {
+			flex-direction: column;
+			text-align: center;
+			gap: 0.25rem;
+		}
+
+		nav {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		nav a {
+			width: 100%;
+			justify-content: center;
+		}
+
+		.logo svg {
+			transform: rotate(90deg);
+		}
 	}
 </style>

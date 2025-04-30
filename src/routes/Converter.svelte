@@ -207,185 +207,187 @@
 	};
 </script>
 
-{#if !fileContent}
-	<div
-		class="dropzone column"
-		class:dragging={isDragging}
-		ondragover={handleDragOver}
-		ondragleave={handleDragLeave}
-		ondrop={handleDrop}
-		onclick={() => fileInput?.click()}
-		onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' ? fileInput?.click() : null)}
-		role="button"
-		tabindex="0"
-		aria-label="Drop a text file here or click to browse"
-	>
-		<div class="button">
-			Select File To Convert
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
-				><rect width="256" height="256" fill="none" /><path
-					d="M48,112V40a8,8,0,0,1,8-8h96l56,56v24"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><polyline
-					points="152 32 152 88 208 88"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="108"
-					y1="152"
-					x2="148"
-					y2="208"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="148"
-					y1="152"
-					x2="108"
-					y2="208"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="84"
-					y1="152"
-					x2="44"
-					y2="152"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="64"
-					y1="152"
-					x2="64"
-					y2="208"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="212"
-					y1="152"
-					x2="172"
-					y2="152"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/><line
-					x1="192"
-					y1="152"
-					x2="192"
-					y2="208"
-					fill="none"
-					stroke="currentColor"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="16"
-				/></svg
-			>
+<div class="column">
+	{#if !fileContent}
+		<div
+			class="dropzone column"
+			class:dragging={isDragging}
+			ondragover={handleDragOver}
+			ondragleave={handleDragLeave}
+			ondrop={handleDrop}
+			onclick={() => fileInput?.click()}
+			onkeydown={(e) => (e.key === 'Enter' || e.key === ' ' ? fileInput?.click() : null)}
+			role="button"
+			tabindex="0"
+			aria-label="Drop a text file here or click to browse"
+		>
+			<div class="button">
+				Select File To Convert
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
+					><rect width="256" height="256" fill="none" /><path
+						d="M48,112V40a8,8,0,0,1,8-8h96l56,56v24"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><polyline
+						points="152 32 152 88 208 88"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="108"
+						y1="152"
+						x2="148"
+						y2="208"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="148"
+						y1="152"
+						x2="108"
+						y2="208"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="84"
+						y1="152"
+						x2="44"
+						y2="152"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="64"
+						y1="152"
+						x2="64"
+						y2="208"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="212"
+						y1="152"
+						x2="172"
+						y2="152"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/><line
+						x1="192"
+						y1="152"
+						x2="192"
+						y2="208"
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="16"
+					/></svg
+				>
+			</div>
+			<p>Drag &amp; Drop your timestamps log file or click to select from system</p>
+			<p class="caveat">Only .txt files containing timestamps will be processed</p>
+
+			<input
+				type="file"
+				accept=".txt,text/plain"
+				style="display: none"
+				onchange={handleFileSelect}
+				bind:this={fileInput}
+			/>
 		</div>
-		<p>Drag &amp; Drop your timestamps log file or click to select from system</p>
-		<p class="caveat">Only .txt files containing timestamps will be processed</p>
+	{/if}
 
-		<input
-			type="file"
-			accept=".txt,text/plain"
-			style="display: none"
-			onchange={handleFileSelect}
-			bind:this={fileInput}
-		/>
-	</div>
-{/if}
+	{#if convertedChapters}
+		<div class="result column">
+			<h2>Results</h2>
+			<div class="offset-controls">
+				<div class="offset-input">
+					<button
+						onclick={() => {
+							offsetSeconds -= 5;
+							processContent();
+						}}>-5s</button
+					>
+					<button
+						onclick={() => {
+							offsetSeconds -= 1;
+							processContent();
+						}}
+						aria-label="Decrease offset by 1 second">-1s</button
+					>
+					<input
+						type="text"
+						readonly
+						value={`${offsetSeconds} seconds offset`}
+						onchange={(e) => {
+							offsetSeconds = parseInt((e.target as HTMLInputElement).value, 10) || 0;
+							processContent();
+						}}
+						aria-label="Timestamp offset in seconds"
+					/>
+					<button
+						onclick={() => {
+							offsetSeconds += 1;
+							processContent();
+						}}
+						aria-label="Increase offset by 1 second">+1s</button
+					>
 
-{#if convertedChapters}
-	<div class="result column">
-		<h2>Results</h2>
-		<div class="offset-controls">
-			<div class="offset-input">
-				<button
-					onclick={() => {
-						offsetSeconds -= 5;
-						processContent();
-					}}>-5s</button
-				>
-				<button
-					onclick={() => {
-						offsetSeconds -= 1;
-						processContent();
-					}}
-					aria-label="Decrease offset by 1 second">-1s</button
-				>
-				<input
-					type="text"
-					readonly
-					value={`${offsetSeconds} seconds offset`}
-					onchange={(e) => {
-						offsetSeconds = parseInt((e.target as HTMLInputElement).value, 10) || 0;
-						processContent();
-					}}
-					aria-label="Timestamp offset in seconds"
-				/>
-				<button
-					onclick={() => {
-						offsetSeconds += 1;
-						processContent();
-					}}
-					aria-label="Increase offset by 1 second">+1s</button
-				>
-
-				<button
-					onclick={() => {
-						offsetSeconds += 5;
-						processContent();
-					}}>+5s</button
-				>
+					<button
+						onclick={() => {
+							offsetSeconds += 5;
+							processContent();
+						}}>+5s</button
+					>
+					<button
+						class="reset"
+						onclick={() => {
+							offsetSeconds = 0;
+							processContent();
+						}}>Reset</button
+					>
+				</div>
+			</div>
+			<textarea rows="10" readonly>{convertedChapters}</textarea>
+			<div class="button-group">
+				<button onclick={copyToClipboard}>
+					{#if copied}
+						Copied!
+					{:else}
+						Copy to Clipboard
+					{/if}
+				</button>
 				<button
 					class="reset"
 					onclick={() => {
+						fileContent = '';
+						convertedChapters = '';
+						errorMessage = '';
 						offsetSeconds = 0;
-						processContent();
-					}}>Reset</button
+						if (fileInput) fileInput.value = '';
+					}}>Change File</button
 				>
 			</div>
 		</div>
-		<textarea rows="10" readonly>{convertedChapters}</textarea>
-		<div class="button-group">
-			<button onclick={copyToClipboard}>
-				{#if copied}
-					Copied!
-				{:else}
-					Copy to Clipboard
-				{/if}
-			</button>
-			<button
-				class="reset"
-				onclick={() => {
-					fileContent = '';
-					convertedChapters = '';
-					errorMessage = '';
-					offsetSeconds = 0;
-					if (fileInput) fileInput.value = '';
-				}}>Change File</button
-			>
-		</div>
-	</div>
-{/if}
+	{/if}
+</div>
 
 <style>
 	.offset-controls,
@@ -499,6 +501,119 @@
 	}
 
 	.column {
-		width: 1000px;
+		width: 100%;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	/* Responsive styles for the dropzone */
+	.dropzone {
+		width: 100%;
+		padding: 1.5rem 1rem;
+	}
+
+	/* Responsive styles for offset controls */
+	.offset-controls {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.offset-input {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		width: 100%;
+		justify-content: center;
+	}
+
+	/* Responsive button and input styles */
+	button,
+	input {
+		font-size: 0.9rem;
+		padding: 0.5rem 0.75rem;
+	}
+
+	/* Button group responsiveness */
+	.button-group {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+
+	/* Responsive textarea */
+	textarea {
+		min-height: 300px;
+	}
+
+	/* Media queries for different screen sizes */
+	@media (max-width: 768px) {
+		.dropzone {
+			padding: 1.5rem 0.75rem;
+		}
+
+		.button {
+			width: 100%;
+			justify-content: center;
+		}
+
+		.dropzone p {
+			text-align: center;
+		}
+
+		textarea {
+			min-height: 250px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.offset-input {
+			grid-template-columns: repeat(2, 1fr);
+			display: grid;
+		}
+
+		.offset-input input {
+			grid-column: span 2;
+			text-align: center;
+		}
+
+		.offset-input button.reset {
+			grid-column: span 2;
+		}
+
+		.button-group {
+			flex-direction: column;
+			width: 100%;
+		}
+
+		.button-group button {
+			width: 100%;
+		}
+
+		.dropzone {
+			border-radius: 1rem;
+			padding: 1rem 0.5rem;
+		}
+
+		textarea {
+			min-height: 200px;
+			padding: 0.75rem;
+		}
+	}
+
+	/* For very small screens */
+	@media (max-width: 320px) {
+		.button svg {
+			display: none;
+		}
+
+		.dropzone p {
+			font-size: 0.9rem;
+		}
+
+		.caveat {
+			font-size: 0.8rem;
+		}
 	}
 </style>
